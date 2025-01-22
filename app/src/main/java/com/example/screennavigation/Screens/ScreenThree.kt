@@ -10,9 +10,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 
 @Composable
-fun ScreenThree(modifer : Modifier = Modifier) {
+fun ScreenThree(navController: NavController, modifer : Modifier = Modifier) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -23,10 +24,10 @@ fun ScreenThree(modifer : Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(text = "Screen Three")
-            Button(onClick = { /*TODO*/ }) {
+            Button(onClick = { navController.popBackStack(navController.graph.startDestinationId, inclusive = false) }) {
                 Text(text = "Home Screen")
             }
-            Button(onClick = { /*TODO*/ }) {
+            Button(onClick = { navController.popBackStack() }) {
                 Text(text = "Previous Screen")
             }
         }

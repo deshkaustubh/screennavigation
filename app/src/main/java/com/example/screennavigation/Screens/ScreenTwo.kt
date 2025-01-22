@@ -10,23 +10,24 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 
 @Composable
-fun ScreenTwo(modifer : Modifier = Modifier) {
+fun ScreenTwo(navController: NavController, modifier : Modifier = Modifier) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
         Column(
-            modifer.fillMaxSize(),
+            modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(text = "Screen Two")
-            Button(onClick = { /*TODO*/ }) {
+            Button(onClick = { navController.popBackStack() }) {
                 Text(text = "Click to Go Back")
             }
-            Button(onClick = { /*TODO*/ }) {
+            Button(onClick = { navController.navigate("screen-three") }) {
                 Text(text = "Screen 3")
             }
         }

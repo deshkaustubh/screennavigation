@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
 import com.example.screennavigation.Screens.ScreenOne
 import com.example.screennavigation.Screens.ScreenThree
 import com.example.screennavigation.Screens.ScreenTwo
@@ -25,7 +26,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ScreenOne()
+                    App()
                 }
             }
         }
@@ -43,24 +44,27 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun ScreenOnePreview() {
+    val navController = rememberNavController()
     ScreenNavigationTheme {
-        ScreenOne()
+        ScreenOne(navController)
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun ScreenTwoPreview() {
+    val navController = rememberNavController()
     ScreenNavigationTheme {
-        ScreenTwo()
+        ScreenTwo(navController)
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun ScreenThreePreview() {
+    val navController = rememberNavController()
     ScreenNavigationTheme {
-        ScreenThree()
+        ScreenThree(navController)
     }
 }
 
