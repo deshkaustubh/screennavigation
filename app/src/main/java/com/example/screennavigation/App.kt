@@ -1,6 +1,7 @@
 package com.example.screennavigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.NavGraphBuilder
@@ -13,25 +14,13 @@ import androidx.navigation.createGraph
 import com.example.screennavigation.Screens.ScreenOne
 import com.example.screennavigation.Screens.ScreenThree
 import com.example.screennavigation.Screens.ScreenTwo
+import com.example.screennavigation.components.MyAppScaffold
 
 // Under this file nav controller, host and graph is to be implemented
 
 // Nav Graph - first in sequence
 
-fun NavGraphBuilder.navigationGraph(navController: NavController) {
 
-    composable("screen-one") {
-        ScreenOne(navController)
-    }
-
-    composable("screen-two") {
-        ScreenTwo(navController)
-    }
-
-    composable("screen-three") {
-        ScreenThree(navController)
-    }
-}
 
 
 @Composable
@@ -44,20 +33,6 @@ fun App() {
 //    }
     // Alternate way
     val navController = rememberNavController()
-    NavHost(navController = navController, graph = getMyNavGraph(navController))
+    MyAppScaffold(navController)
 }
 
-// another way to do Nav Graph
-fun getMyNavGraph(controller: NavController): NavGraph {
-    return controller.createGraph(startDestination = "screen-one") {
-        composable("screen-one") {
-            ScreenOne(navController = controller)
-        }
-        composable("screen-two") {
-            ScreenTwo(navController = controller)
-        }
-        composable("screen-three") {
-            ScreenThree(navController = controller)
-        }
-    }
-}

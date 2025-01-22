@@ -13,13 +13,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 
 @Composable
-fun ScreenThree(navController: NavController, modifer : Modifier = Modifier) {
+fun ScreenThree(navController: NavController, modifier : Modifier = Modifier) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
         Column(
-            modifer.fillMaxSize(),
+            modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
