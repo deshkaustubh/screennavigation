@@ -25,7 +25,7 @@ fun ScreenOne(navController: NavController, modifier : Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(text = "Screen One")
-            Button(onClick = { navController.navigate("screen-two") }) {
+            Button(onClick = { navController.navigate("screen-two/This is the data") }) {
                 Text(text = "Click for Screen 2")
             }
         }

@@ -28,13 +28,14 @@ import androidx.navigation.createGraph
 import com.example.screennavigation.Screens.ScreenOne
 import com.example.screennavigation.Screens.ScreenThree
 import com.example.screennavigation.Screens.ScreenTwo
+import com.example.screennavigation.utils.getMyNavGraph
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyAppScaffold(navController: NavController) {
+fun MyAppScaffold( startDestination: String, navController: NavController) {
 
-    var isBackEnabled = remember {
+    val isBackEnabled = remember {
         mutableStateOf(false)
     }
 
@@ -58,7 +59,7 @@ fun MyAppScaffold(navController: NavController) {
                 
                 navigationIcon = {
 
-                    var navIcon = if(isBackEnabled.value) {
+                    val navIcon = if(isBackEnabled.value) {
                         Icons.Filled.Home
                     } else {
                         Icons.Filled.ArrowBack
@@ -76,43 +77,8 @@ fun MyAppScaffold(navController: NavController) {
         }
     ){ paddingvalues ->
 
-        NavHost(navController = navController as NavHostController, graph = getMyNavGraph(navController, paddingvalues))
+        NavHost(navController = navController as NavHostController, graph = getMyNavGraph(startDestination ,navController, paddingvalues))
 
     }
 }
 
-
-// another way to do Nav Graph
-fun getMyNavGraph(controller: NavController, paddingvalues: PaddingValues): NavGraph {
-    return controller.createGraph(startDestination = "screen-one") {
-        composable("screen-one") {
-            ScreenOne(navController = controller, modifier = Modifier.padding(paddingvalues))
-        }
-        composable("screen-two") {
-            ScreenTwo(navController = controller,modifier = Modifier.padding(paddingvalues))
-        }
-        composable("screen-three") {
-            ScreenThree(navController = controller, modifier = Modifier.padding(paddingvalues))
-        }
-    }
-}
-
-
-
-
-// Redundant Code
-
-//fun NavGraphBuilder.navigationGraph(navController: NavController) {
-//
-//    composable("screen-one") {
-//        ScreenOne(navController)
-//    }
-//
-//    composable("screen-two") {
-//        ScreenTwo(navController)
-//    }
-//
-//    composable("screen-three") {
-//        ScreenThree(navController)
-//    }
-//}

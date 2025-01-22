@@ -24,7 +24,7 @@ import com.example.screennavigation.components.MyAppScaffold
 
 
 @Composable
-fun App() {
+fun App(startDestination: String = "screen-one") {
 //    // Nav Controller
 //    val navController = rememberNavController()
 //    // Nav Host
@@ -33,6 +33,6 @@ fun App() {
 //    }
     // Alternate way
     val navController = rememberNavController()
-    MyAppScaffold(navController)
+    MyAppScaffold(startDestination ,navController)
 }
 

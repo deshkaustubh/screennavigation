@@ -41,30 +41,30 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
-@Preview(showBackground = true)
-@Composable
-fun ScreenOnePreview() {
-    val navController = rememberNavController()
-    ScreenNavigationTheme {
-        ScreenOne(navController)
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun ScreenOnePreview() {
+//    val navController = rememberNavController()
+//    ScreenNavigationTheme {
+//        ScreenOne(navController)
+//    }
+//}
 
-@Preview(showBackground = true)
-@Composable
-fun ScreenTwoPreview() {
-    val navController = rememberNavController()
-    ScreenNavigationTheme {
-        ScreenTwo(navController)
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun ScreenTwoPreview() {
+//    val navController = rememberNavController()
+//    ScreenNavigationTheme {
+//        ScreenTwo( navController)
+//    }
+//}
 
-@Preview(showBackground = true)
-@Composable
-fun ScreenThreePreview() {
-    val navController = rememberNavController()
-    ScreenNavigationTheme {
-        ScreenThree(navController)
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun ScreenThreePreview() {
+//    val navController = rememberNavController()
+//    ScreenNavigationTheme {
+//        ScreenThree(navController)
+//    }
+//}
 

@@ -27,6 +27,7 @@ fun ScreenTwo(navController: NavController, modifier : Modifier = Modifier) {
             Button(onClick = { navController.popBackStack() }) {
                 Text(text = "Click to Go Back")
             }
+            Text(text = "Screen Two data received: ${navController.currentBackStackEntry?.arguments?.getString("data")}")
             Button(onClick = { navController.navigate("screen-three") }) {
                 Text(text = "Screen 3")
             }
