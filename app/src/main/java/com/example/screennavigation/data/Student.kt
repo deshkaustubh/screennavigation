@@ -2,7 +2,6 @@ package com.example.screennavigation.data
 
 import kotlinx.serialization.Serializable
 
-@Serializable
 data class Student (
     val name: String,
     val age: Int,

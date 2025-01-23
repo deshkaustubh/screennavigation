@@ -18,10 +18,12 @@ fun getMyNavGraph(startDestination: String ,controller: NavController, paddingva
         composable("screen-one") {
             ScreenOne(navController = controller, modifier = Modifier.padding(paddingvalues))
         }
-        composable("screen-two/{data}") {
-            val data = it.arguments?.getString("data") ?: "No Data Available"
+        composable("screen-two/{rollNo}") {
+
+            val stringRollNumber = it.arguments?.getString("rollNo")?: "0" // anything you pass here is converted to a string
+            val data = stringRollNumber.toInt()
             controller.currentBackStackEntry?.arguments?.apply {
-                putString("data",data)
+                putInt("rollNo", data)
             }
             ScreenTwo(navController = controller,modifier = Modifier.padding(paddingvalues))
         }
