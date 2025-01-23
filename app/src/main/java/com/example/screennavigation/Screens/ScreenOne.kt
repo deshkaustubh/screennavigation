@@ -11,10 +11,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.example.screennavigation.data.Student
+import kotlinx.serialization.json.Json
 
 
 @Composable
 fun ScreenOne(navController: NavController, modifier : Modifier = Modifier) {
+
+    val sampleStudent = Student(
+        name = "Yash Shah",
+        age = 25,
+        address = "San Fransisco, USA",
+        contact = "123654789",
+        email = "yash@shah.com",
+        rollNo = 23,
+        standard = 14
+    )
+
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -24,8 +37,12 @@ fun ScreenOne(navController: NavController, modifier : Modifier = Modifier) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+
+            val json = Json { prettyPrint = true }
+            val data = json.encodeToString(Student.serializer() , sampleStudent)
+
             Text(text = "Screen One")
-            Button(onClick = { navController.navigate("screen-two/This is the data") }) {
+            Button(onClick = { navController.navigate("screen-two/$data") }) {
                 Text(text = "Click for Screen 2")
             }
         }
