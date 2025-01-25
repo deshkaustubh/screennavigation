@@ -29,11 +29,14 @@ import com.example.screennavigation.Screens.ScreenOne
 import com.example.screennavigation.Screens.ScreenThree
 import com.example.screennavigation.Screens.ScreenTwo
 import com.example.screennavigation.utils.getMyNavGraph
+import com.example.screennavigation.viewmodel.SharedViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyAppScaffold( startDestination: String, navController: NavController) {
+fun MyAppScaffold( startDestination: String,
+                   navController: NavHostController,
+                   sharedViewModel: SharedViewModel) {
 
     val isBackEnabled = remember {
         mutableStateOf(false)
@@ -77,7 +80,8 @@ fun MyAppScaffold( startDestination: String, navController: NavController) {
         }
     ){ paddingvalues ->
 
-        NavHost(navController = navController as NavHostController, graph = getMyNavGraph(startDestination ,navController, paddingvalues))
+        NavHost(navController = navController,
+            graph = getMyNavGraph(startDestination ,navController, paddingvalues, sharedViewModel))
 
     }
 }

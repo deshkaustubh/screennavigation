@@ -1,6 +1,7 @@
 package com.example.screennavigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph
@@ -15,6 +16,7 @@ import com.example.screennavigation.Screens.ScreenOne
 import com.example.screennavigation.Screens.ScreenThree
 import com.example.screennavigation.Screens.ScreenTwo
 import com.example.screennavigation.components.MyAppScaffold
+import com.example.screennavigation.viewmodel.SharedViewModel
 
 // Under this file nav controller, host and graph is to be implemented
 
@@ -33,6 +35,12 @@ fun App(startDestination: String = "screen-one") {
 //    }
     // Alternate way
     val navController = rememberNavController()
-    MyAppScaffold(startDestination ,navController)
+    val context = LocalContext.current
+    val application = context.applicationContext as MyApplication
+
+    val sharedViewModel = remember {
+        SharedViewModel(application.getRepository())
+    }
+    MyAppScaffold(startDestination, navController, sharedViewModel)
 }
 

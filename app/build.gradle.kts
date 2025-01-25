@@ -56,6 +56,20 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.7.6")
     //For serialisation / Deserialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+    // For Shared View Model
+    val lifecycle_version = "2.7.0"
+    // View Model
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    // View Model utilites for compose
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
+    //Live Data
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+    //Lifecycle only (without viewModel or LiveData)
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
+    //Lifecycle utilizes for compose
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version")
+    // Saved Data Module for viewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
 
     implementation("androidx.core:core-ktx:1.15.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")

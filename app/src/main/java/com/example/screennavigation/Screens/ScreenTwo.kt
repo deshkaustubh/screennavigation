@@ -15,12 +15,16 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import com.example.screennavigation.MyApplication
 import com.example.screennavigation.data.Student
+import com.example.screennavigation.viewmodel.SharedViewModel
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.*
 import kotlinx.serialization.*
 
 @Composable
-fun ScreenTwo(navController: NavController, modifier : Modifier = Modifier) {
+fun ScreenTwo(navController: NavController,
+              modifier : Modifier = Modifier,
+              sharedViewModel: SharedViewModel
+) {
     val context = LocalContext.current
     val myApplication = context.applicationContext as MyApplication
 
@@ -38,13 +42,7 @@ fun ScreenTwo(navController: NavController, modifier : Modifier = Modifier) {
                 Text(text = "Click to Go Back")
             }
 
-            val stringRollNumber = navController.currentBackStackEntry?.arguments?.getString("rollNo")?: "0" // anything you pass here is converted to a string
-            val rollNo= stringRollNumber.toInt()
-            val student = myApplication.getRepository().getStudent(rollNo)
-
-            Log.i("ScreenTwo", "Roll Number received $student")
-
-            Text(text = "Screen Two data received:$student")
+            Text(text = "Screen Two data received:${sharedViewModel.getStudent()}")
 
             Button(onClick = { navController.navigate("screen-three") }) {
                 Text(text = "Screen 3")
