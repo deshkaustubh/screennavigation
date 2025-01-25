@@ -8,6 +8,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
@@ -21,7 +23,7 @@ fun ScreenOne(navController: NavController,
               modifier : Modifier = Modifier,
               sharedViewModel: SharedViewModel
 ) {
-
+    
     val sampleStudent = Student(
         name = "Yash Shah",
         age = 25,
@@ -42,6 +44,13 @@ fun ScreenOne(navController: NavController,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
+            Text(text = "Below is implementation of passing data using route parameter mechanism")
+            Button(onClick = { 
+                navController.navigate("sampleDialog")
+            }) {
+                Text(text = "Show Dialog")
+            }
+            
             val rollNo = 101
             Text(text = "Screen One")
 
